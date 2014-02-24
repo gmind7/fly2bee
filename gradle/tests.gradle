@@ -1,0 +1,21 @@
+apply plugin: 'pmd'
+apply plugin: 'findbugs'
+
+findbugs {
+	ignoreFailures = true
+	sourceSets = [sourceSets.main]
+}
+
+pmd {
+	ruleSets = ["basic", "braces", "design"]
+	ignoreFailures = true
+}
+/*
+test {
+	reports.html.enabled = false
+}
+*/
+
+//task testReport(type: TestReport) {
+//  destinationDir = file("$buildDir/reports/allTests")
+//}
