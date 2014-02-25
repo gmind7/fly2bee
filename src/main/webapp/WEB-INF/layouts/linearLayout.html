@@ -5,13 +5,13 @@
 <head th:include="fragmentLayout :: headTag"/>
 <body>
   <!-- Docs master nav -->
-  <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner" th:include="fragmentLayout :: headerTag"/>
+  <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner" th:include="fragmentLayout :: headerTag"/>
   <!-- Main ================================================= -->
-  <main class="bs-masthead" id="content" role="main" layout:fragment="mainContainer"/>
+  <main id="content" role="main" class="intro-section" layout:fragment="mainContainer"/>
   <!-- / Main -->
   
   <!-- Footer ================================================= -->
-  <footer id="footer" class="footer hidden-print" th:include="fragmentLayout :: footerTag"/>
+  <footer class="bs-docs-footer" role="contentinfo" th:include="fragmentLayout :: footerTag"/>
   <!-- / footer -->
   
   <!-- Bootstrap core JavaScript ================================================== -->
