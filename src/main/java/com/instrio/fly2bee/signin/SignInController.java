@@ -18,7 +18,7 @@ public class SignInController {
 	@RequestMapping(value = "/signin", method = RequestMethod.GET)
 	public String showSigninPage(WebRequest request, Model model){
 		
-		log.debug("welcome to the gmind7 bakery signinController.............");
+		log.debug("Rendering signin page.");
 		
 		Connection<?> connection = ProviderSignInUtils.getConnection(request);
     	

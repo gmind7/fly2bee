@@ -32,6 +32,7 @@ public class SignUpController {
     
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public String showSignupPage(WebRequest request, Model model) {
+    	
     	log.debug("Rendering signup page.");
     	
         Connection<?> connection = ProviderSignInUtils.getConnection(request);

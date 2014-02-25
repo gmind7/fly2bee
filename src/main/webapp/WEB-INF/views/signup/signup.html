@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" layout:decorator="default/layout">
+<head lang="ko">
+  <title th:text="#{view.label.home.title}">홈</title>
+</head>
+<body>
+  <main class="bs-masthead" id="content" role="main" layout:fragment="mainContainer">
+    <div class="container">
+      <h1>부트스트랩</h1>
+      <p class="lead">
+        강력한 프론트엔드 프레임워크.<br/>
+        부트스트랩3 한글 번역페이지입니다.
+        <!--보다 빠르고 쉬운 웹개발을 위한 깔끔하고 직관적이며 강력한 모바일 우선 프론트엔드 프레임워크.-->
+      </p>
+      <p>
+        <a href="https://github.com/twbs/bootstrap/releases/download/v3.0.0/bootstrap-3.0.0-dist.zip" class="btn btn-outline-inverse btn-lg" onclick="ga('send', 'event', '점보트론', '다운로드');">부트스트랩 다운로드</a>
+        <a href="http://getbootstrap.com" class="btn btn-outline-inverse btn-lg" onclick="ga('send', 'event', '점보트론', '원본사이트');">원본사이트 가기</a>
+      </p>
+    </div>
+  </main>
+</body>
+</html>

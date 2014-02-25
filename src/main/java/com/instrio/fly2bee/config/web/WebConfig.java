@@ -31,6 +31,7 @@ import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2JsonpHttpMessageConverter;
 import org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.context.support.ResourceBundleThemeSource;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
@@ -55,6 +56,8 @@ import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
+import org.springframework.web.servlet.theme.CookieThemeResolver;
+import org.springframework.web.servlet.theme.ThemeChangeInterceptor;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
@@ -124,7 +127,10 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void addInterceptors(InterceptorRegistry registry) {
         LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
         localeChangeInterceptor.setParamName("lang");
+        ThemeChangeInterceptor themeChangeInterceptor = new ThemeChangeInterceptor();
+        themeChangeInterceptor.setParamName("theme");
         registry.addInterceptor(localeChangeInterceptor);
+        registry.addInterceptor(themeChangeInterceptor);
     }
 	
 	@Override
@@ -175,6 +181,20 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 	
 	@Bean
+	public CookieThemeResolver themeResolver(){
+		CookieThemeResolver cookieThemeResolver = new CookieThemeResolver();
+		cookieThemeResolver.setDefaultThemeName("default");
+		return cookieThemeResolver;
+	}
+	
+	@Bean
+	public ResourceBundleThemeSource themeSource(){
+		ResourceBundleThemeSource resourceBundleThemeSource = new ResourceBundleThemeSource();
+		resourceBundleThemeSource.setBasenamePrefix("theme-");
+		return resourceBundleThemeSource;
+	}
+	
+	@Bean
 	public MultipartResolver multipartResolver() {
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
 		multipartResolver.setMaxUploadSize(10240000);
@@ -216,8 +236,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         dialects.add(new LayoutDialect());
         engine.setAdditionalDialects(dialects);
         LinkedHashSet<ITemplateResolver> templateResolvers = new LinkedHashSet<ITemplateResolver>(2);
-        templateResolvers.add(templateResolverServlet());
         templateResolvers.add(layoutTemplateResolverServlet());
+        templateResolvers.add(templateResolverServlet());
         engine.setTemplateResolvers(templateResolvers);
         return engine;
     }
@@ -269,6 +289,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		negotiating.setOrder(2);
 		
 		return negotiating;
-	}	
+	}
 	
 }

@@ -1,22 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" layout:decorator="default/layout">
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" layout:decorator="linearLayout">
 <head lang="ko">
   <meta charset="utf-8" />
   <title th:text="#{view.label.home.title}">홈</title>
 </head>
-<body>
-  <!-- header -->
-  <!-- / header -->
+<body class="bs-docs-home">
+  <main class="bs-masthead" id="content" role="main" layout:fragment="mainContainer">
+    <div class="container">
+      <h1>Sharing Economy</h1>
+      <p class="lead" th:text="#{view.label.brand.intro}"/>
+      <p>
+        <a href="#" th:href="@{/auth/facebook?scope=email,offline_access}" class="btn btn-outline-inverse btn-lg"><i class="fa fa-facebook"></i> 페이스북 로그인하기</a>
+        <a href="#" th:href="@{/auth/twitter}" class="btn btn-outline-inverse btn-lg"><i class="fa fa-twitter"></i> 트위터 로그인하기</a>
+      </p>
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-lg-4">
+          <h3>여기에 뭔가 있다.</h3>
+          <section class="panel">
+            <div>
+              <div id="gmap_geocoding" style="height:200px"></div>
+            </div>
+          </section>
+        </div>
+        <div class="col-lg-4">
+          <h3>여기에 뭔가 있다.</h3>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-primary" href="#">View details &raquo;</a></p>
+        </div>
+        <div class="col-lg-4">
+          <h3>Heading</h3>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+          <p><a class="btn btn-primary" href="#">View details &raquo;</a></p>
+        </div>
+      </div>
+      
+    </div>
+  </main>
   
-  <!-- content -->
-  <div class="container" layout:fragment="container">
-  hellow world
+  <div layout:fragment="customTag">
+    <script src="http://maps.google.com/maps/api/js?sensor=true" cache="false"></script>
+    <script src="../../resources/custom/js/maps/gmaps.js" th:src="@{/resources/custom/js/maps/gmaps.js}"></script>
+    <script src="../../resources/custom/js/maps/demo.js" th:src="@{/resources/custom/js/maps/demo.js}"></script>
   </div>
-  <!-- / content -->
-  
-  <!-- footer -->
-  <!-- / footer -->
 </body>
 </html>

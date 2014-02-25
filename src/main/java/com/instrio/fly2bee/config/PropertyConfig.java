@@ -13,6 +13,11 @@ public class PropertyConfig {
 	}
 	
 	@Configuration
+	@PropertySource("classpath:theme/theme-default.properties")
+	static class themePropertyConfig {
+	}
+	
+	@Configuration
 	@Profile("loc")
 	@PropertySource("classpath:environment/database_loc.properties")
 	static class databaseLocalPropertyConfig {
