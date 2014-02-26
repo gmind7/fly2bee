@@ -115,10 +115,19 @@ body {
  * Turn the `.navbar` at the top of the docs purple.
  */
 
-.intro-section {
+.bs-intro-section {
   padding-top:42px;
   height:249px;
   background:#fff url("//d2skqxifvz50tr.cloudfront.net/assets/images/homepage/bg-intro.png") 50% 100% no-repeat
+}
+
+.bs-center-tie {
+  padding: 25px 0px 15px;
+  margin-bottom: 25px;
+  line-height: 2.1428571435;
+  background-color: #f5f5f5;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .bs-docs-nav {

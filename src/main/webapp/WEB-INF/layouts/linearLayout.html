@@ -2,24 +2,188 @@
 <html xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
   xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-<head th:include="fragmentLayout :: headTag"/>
-<body>
+<head lang="ko" th:lang="#{view.html.lang}" th:fragment="headTag" layout:fragment="headTag">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="" />
+  <title layout:title-pattern="$DECORATOR_TITLE | $CONTENT_TITLE" th:text="#{view.label.brand.name}" th:fragment="titleTag">fly2bee</title>
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="../../resources/bootstrap/dist/css/bootstrap.css"  th:href="@{/resources/bootstrap/dist/css/bootstrap.css}"/>
+  <!-- Documentation extras -->                      
+  <link rel="stylesheet" href="../../resources/bootstrap/assets/css/docs.css" th:href="@{/resources/bootstrap/assets/css/docs.css}"/>
+  <!-- Bootstrap Font Awesome CSS -->             
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"/>
+  <!-- HTML5 shim and Respond.js IE8+ support of HTML5 elements and media queries -->                                            
+  <!--[if lt IE 8]>
+    <script src="../assets/js/ie8-responsive-file-warning.js"></script>
+  <![endif]-->  
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+    
+  <!-- Favicons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../resources/bootstrap/assets/ico/apple-touch-icon-144-precomposed.png" th:href="@{/resources/bootstrap/assets/ico/apple-touch-icon-144-precomposed.png}"/>
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../resources/bootstrap/assets/ico/apple-touch-icon-114-precomposed.png" th:href="@{/resources/bootstrap/assets/ico/apple-touch-icon-114-precomposed.png}"/>
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../resources/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png" th:href="@{/resources/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png}"/>
+  <link rel="apple-touch-icon-precomposed" href="../../resources/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png" th:href="@{/resources/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png}"/>
+  <link rel="shortcut icon" href="../../resources/bootstrap/assets/ico/favicon.png"  th:href="@{/resources/bootstrap/assets/ico/favicon.png}"/>
+  
+  <!-- SyntaxHighlighter
+  <script type="text/javascript" src="../../resources/bootstrap/assets/syntaxhighlighter/scripts/shCore.js" th:src="@{/resources/bootstrap/assets/syntaxhighlighter/scripts/shCore.js}"></script>
+  <script type="text/javascript" src="../../resources/bootstrap/assets/syntaxhighlighter/scripts/shBrushJScript.js" th:src="@{/resources/bootstrap/assets/syntaxhighlighter/scripts/shCore.js}"></script>
+  <script type="text/javascript" src="../../resources/bootstrap/assets/syntaxhighlighter/scripts/shBrushCss.js" th:src="@{/resources/bootstrap/assets/syntaxhighlighter/scripts/shCore.js}"></script>
+  <script type="text/javascript" src="../../resources/bootstrap/assets/syntaxhighlighter/scripts/shBrushXml.js" th:src="@{/resources/bootstrap/assets/syntaxhighlighter/scripts/shCore.js}"></script>
+  <script type="text/javascript" src="../../resources/bootstrap/assets/syntaxhighlighter/scripts/shBrushBash.js" th:src="@{/resources/bootstrap/assets/syntaxhighlighter/scripts/shCore.js}"></script>
+  <link href="../../resources/bootstrap/assets/syntaxhighlighter/styles/shCore.css" rel="stylesheet" th:href="@{/resources/bootstrap/assets/syntaxhighlighter/styles/shCore.css}" type="text/css" />
+  <link href="../../resources/bootstrap/assets/syntaxhighlighter/styles/shThemeBootstrap.css" rel="stylesheet" th:href="@{/resources/bootstrap/assets/syntaxhighlighter/styles/shThemeBootstrap.css}" type="text/css" />
+   -->
+  <style>
+    @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+    /*
+    @import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
+    @import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+    @import url(http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+    @import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+    
+    .nanum-g { font-family: 'Nanum Gothic'; }
+    .nanum-b { font-family: 'Nanum Brush Script'; }
+    .nanum-gc { font-family: 'Nanum Gothic Coding'; }
+    .nanum-m { font-family: 'Nanum Myeongjo';  }
+    .nanum-p { font-family: 'Nanum Pen Script'; }
+    */
+    h1,h2,h3,h4,h5,h6,p,a,div,code{font-family:'Nanum Gothic';}
+    .navbar-brand { font-family: 'Malgun Gothic'; }
+  </style>
+  <script>
+  /**
+    SyntaxHighlighter.config.bloggerMode = true;
+    SyntaxHighlighter.defaults['gutter'] = false;
+    SyntaxHighlighter.defaults['toolbar'] = false;
+    SyntaxHighlighter.defaults['class-name'] = 'bootstrap';
+    SyntaxHighlighter.all();
+    //구글분석기
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-44056132-1', 'bootstrapk.com');
+    ga('send', 'pageview');
+  **/
+  </script>
+</head>
+<body th:fragment="bodyTag" layout:fragment="bodyTag">
+
   <!-- Docs master nav -->
-  <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner" th:include="fragmentLayout :: headerTag"/>
-  <!-- Main ================================================= -->
-  <main id="content" role="main" class="intro-section" layout:fragment="mainContainer"/>
-  <!-- / Main -->
+  <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner" th:fragment="headerTag" layout:fragment="headerTag">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <i class="fa fa-bars fa-lg"></i>
+        </button>
+        <a class="navbar-brand malgun-gothic" href="../"><i class="fa fa-coffee"></i> fly2bee</a>
+      </div>
+  
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="hidden-sm"><a href="../bees">이런 일꾼 어떠세요?</a></li>
+          <li class="hidden-sm"><a href="../flowers">살다 살다 이런 일이?</a></li>
+          <!-- 
+          <li class="hidden-sm">
+            <a href="../whats-new/">What's New</a>
+          </li>
+          <li class="hidden-xs hidden-md hidden-lg">
+            <a href="../whats-new/">New</a>
+          </li>
+          <li><a href="../get-started/">Get Started</a></li>
+          <li class="dropdown-split-left"><a href="../icons/">Icons</a></li>
+          <li class="dropdown dropdown-split-right hidden-xs">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu pull-right">
+              <li><a href="../icons/"><i class="fa fa-flag fa-fw"></i>&nbsp; Icons</a></li>
+              <li class="divider"></li>
+              <li><a href="../icons/#new"><i class="fa fa-rub fa-fw"></i>&nbsp; New Icons in 4.0</a></li>
+              <li><a href="../icons/#web-application"><i class="fa fa-camera-retro fa-fw"></i>&nbsp; Web Application Icons</a></li>
+              <li><a href="../icons/#form-control"><i class="fa fa-check-square fa-fw"></i>&nbsp; Form Control Icons</a></li>
+              <li><a href="../icons/#currency"><i class="fa fa-won fa-fw"></i>&nbsp; Currency Icons</a></li>
+              <li><a href="../icons/#text-editor"><i class="fa fa-file-text-o fa-fw"></i>&nbsp; Text Editor Icons</a></li>
+              <li><a href="../icons/#directional"><i class="fa fa-hand-o-right fa-fw"></i>&nbsp; Directional Icons</a></li>
+              <li><a href="../icons/#video-player"><i class="fa fa-play-circle fa-fw"></i>&nbsp; Video Player Icons</a></li>
+              <li><a href="../icons/#brand"><i class="fa fa-github fa-fw"></i>&nbsp; Brand Icons</a></li>
+              <li><a href="../icons/#medical"><i class="fa fa-medkit fa-fw"></i>&nbsp; Medical Icons</a></li>
+            </ul>
+          </li>
+          <li class="dropdown-split-left"><a href="../examples/">Examples</a></li>
+          <li class="dropdown dropdown-split-right hidden-xs">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu pull-right">
+              <li><a href="../examples/">Examples</a></li>
+              <li class="divider"></li>
+              <li><a href="../examples/#inline">Inline Icons</a></li>
+              <li><a href="../examples/#larger">Larger Icons</a></li>
+              <li><a href="../examples/#fixed-width">Fixed Width Icons</a></li>
+              <li><a href="../examples/#list">List Icons</a></li>
+              <li><a href="../examples/#bordered-pulled">Bordered Pulled Icons</a></li>
+              <li><a href="../examples/#spinning">Spinning Icons</a></li>
+              <li><a href="../examples/#rotated-flipped">Rotated &amp; Flipped Icons</a></li>
+              <li><a href="../examples/#stacked">Stacked Icons</a></li>
+              <li><a href="../examples/#bootstrap">Bootstrap 3 Examples</a></li>
+              <li><a href="../examples/#custom">Custom CSS</a></li>
+            </ul>
+          </li>
+          <li class="active"><a href="../community/">Community</a></li>
+          <li><a href="../license/">License</a></li>
+           -->
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#" th:href="@{/signin}" th:text="#{view.label.signin.name}">로그인</a></li>
+          <li><a href="#" th:href="@{/signup}" th:text="#{view.label.signup.name}">회원가입</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Content ================================================ -->
+  <div th:fragment="contentTag" layout:fragment="contentTag"/>
+  <!-- / Content -->
   
   <!-- Footer ================================================= -->
-  <footer class="bs-docs-footer" role="contentinfo" th:include="fragmentLayout :: footerTag"/>
-  <!-- / footer -->
+  <footer class="bs-docs-footer" role="contentinfo" th:fragment="footerTag" layout:fragment="footerTag">
+    <div class="container text-center">
+      <div>
+        <ul class="list-inline">
+          <li class="follow-btn">
+            <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Finstrio.studio%2F&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=21&amp;appId=257590577738566" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:180px; height:21px;" allowTransparency="true"></iframe>
+            <iframe src="//platform.twitter.com/widgets/follow_button.html?screen_name=instriostudio" scrolling="no" frameborder="0" width="250" height="21" allowtransparency="true" style="border:none;margin-top:4px;"  data-show-count="false"></iframe>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <ul class="list-inline">
+          <li>
+            Copyright © Instrio Studio Corporation. All Rights Reserved.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <!-- / Footer -->
   
   <!-- Bootstrap core JavaScript ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
-  <div th:include="fragmentLayout :: scriptTag"/>
-  
-  <!-- Custom JavaScript ========================================================== -->
-  <div layout:fragment="customTag"/>
+  <div th:fragment="scriptTag" layout:fragment="scriptTag">
+    <script src="../../resources/jquery/dist/js/jquery.js" th:src="@{/resources/jquery/dist/js/jquery.min.js}"></script>
+    <script src="../../resources/bootstrap/dist/js/bootstrap.js" th:src="@{/resources/bootstrap/dist/js/bootstrap.min.js}"></script>
+    <script src="../../resources/bootstrap/assets/js/holder.js" th:src="@{/resources/bootstrap/assets/js/holder.js}"></script>
+  </div>
   
 </body>
 </html>
