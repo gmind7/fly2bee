@@ -1,4 +1,4 @@
-description = "www.instrio.com"
+description = "www.fly2bee.com"
 
 defaultTasks 'build'
 

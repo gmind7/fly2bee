@@ -45,6 +45,27 @@ body {
   position: relative; /* For scrollspy */
 }
 
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+
+.nanum-g { font-family: 'Nanum Gothic'; }
+.nanum-b { font-family: 'Nanum Brush Script'; }
+.nanum-gc { font-family: 'Nanum Gothic Coding'; }
+.nanum-m { font-family: 'Nanum Myeongjo';  }
+.nanum-p { font-family: 'Nanum Pen Script'; }
+
+.malgun-g { font-family: 'Malgun Gothic'; }
+
+h1,h2,h3,h4,h5,h6,p,a,div,code{font-family:'Nanum Gothic';}
+.navbar-brand { font-family: 'Malgun Gothic'; }
+
+.btn-custom {
+    width: 100px !important;
+}
+
 /* Keep code small in tables on account of limited space */
 .table code {
   font-size: 13px;
