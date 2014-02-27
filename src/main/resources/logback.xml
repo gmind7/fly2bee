@@ -42,7 +42,7 @@
     </else>
   </if>
   
-  <logger name="com.instrio" level="debug" />
+  <logger name="com.tecktree" level="debug" />
   
   <logger name="org.springframework" level="warn"/>
       

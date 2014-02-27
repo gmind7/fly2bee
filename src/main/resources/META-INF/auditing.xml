@@ -8,6 +8,6 @@
 
     <jpa:auditing auditor-aware-ref="springSecurityAuditorAware" />
     
-    <bean id="springSecurityAuditorAware" class="com.instrio.fly2bee.security.SpringSecurityAuditorAware" />
+    <bean id="springSecurityAuditorAware" class="com.tecktree.security.SpringSecurityAuditorAware" />
 
 </beans>
