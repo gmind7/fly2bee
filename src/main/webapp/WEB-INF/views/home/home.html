@@ -9,29 +9,32 @@
   <div layout:fragment="contentTag">
     <div id="content" role="main" class="bs-intro-section">
 	    <div class="container">
-	      <h3 class="malgun-g">누군가의 코칭이 필요하거나 파트너가 필요할때...</h3>
-	      <p class="lead">게임 개발 같이 하실 분.. 모던 락 밴드 멤버 구해요..<i class="fa fa-arrow-circle-o-right"></i></p>	      
+	      <h3 class="malgun-g">경험과 재능, 지식을 나누는 공유 서비스</h3>
+	      <p class="lead">이제는 당신의 재능과 열정을 판매 하세요.<i class="fa fa-arrow-circle-o-right"></i></p>	      
 	      <p>
 	        <a href="#"><button type="button" class="btn btn-success btn-custom">코치찾기</button></a>
-	        <a href="#"><button type="button" class="btn btn-success btn-custom">팀원찾기</button></a>
+	        <a href="#"><button type="button" class="btn btn-success btn-custom">파트너찾기</button></a>
 	      </p>
 	    </div>
 	  </div>
     <!-- Docs page layout -->
     <div class="bs-center-tie">
 		  <div class="container text-center">
-        <p>
+        <p sec:authorize="isAnonymous()">
            <i class="fa fa-user"></i> <span th:text="#{view.label.signin.description}"> 페이스북, 트위터 계정으로 간편하게 로그인이 가능합니다. </span> 
            <a href="#" th:href="@{/auth/facebook?scope=email,offline_access}" class="btn btn-outline-inverse"><i class="fa fa-facebook"></i> 페이스북 로그인하기  </a>
            <a href="#" th:href="@{/auth/twitter}" class="btn btn-outline-inverse"><i class="fa fa-twitter"></i> 트위터 로그인하기</a>
+        </p>
+        <p sec:authorize="isAuthenticated()">
+          <i class="fa fa-user"></i> <span th:text="${#authentication.principal.name}"></span>님 환영 합니다.
         </p>
 		  </div>
 	  </div>
 	  <div class="row">
       <div class="container text-center">
         <div class="col-lg-12">
-          <h2 class="page-header">Hive Trainer
-            <small>Showcase Your Work Two Columns at a Time</small>
+          <h2 class="page-header">함께해요.
+            <small>지금 시작 되는 프로젝트에 당신의 재능을 발휘해 보세요.</small>
           </h2>
         </div>
       </div>
@@ -66,6 +69,55 @@
 	        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
 	      </div>
 	    </div>
+    </div>
+    <div class="row">
+      <div class="container text-center">
+        <div class="col-lg-12">
+          <h2 class="page-header">도와주세요.
+            <small>지금 당신의 재능을 필요로 합니다.</small>
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="container">
+        <div class="col-md-4 portfolio-item">
+          <a href="#project-link">
+            <img class="img-responsive" src="http://placehold.it/700x400"/>
+          </a>
+          <h3>
+            <a href="#project-link">Project Name</a>
+          </h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+        </div>
+        <div class="col-md-4 portfolio-item">
+          <a href="#project-link">
+            <img class="img-responsive" src="http://placehold.it/700x400"/>
+          </a>
+          <h3>
+            <a href="#project-link">Project Name</a>
+          </h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+        </div>
+        <div class="col-md-4 portfolio-item">
+          <a href="#project-link">
+            <img class="img-responsive" src="http://placehold.it/700x400"/>
+          </a>
+          <h3>
+            <a href="#project-link">Project Name</a>
+          </h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="container text-center">
+        <div class="col-lg-12">
+          <h2 class="page-header">도와드려요.
+            <small>지금 당신의 재능과 열정을 판매해 보세요.</small>
+          </h2>
+        </div>
+      </div>
     </div>
     <div class="row">
       <div class="container">
